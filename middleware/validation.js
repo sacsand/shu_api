@@ -1,8 +1,6 @@
 
 var validator = require('node-validator');
 
-
-
 module.exports = {
 
   validateRecipe: function(){

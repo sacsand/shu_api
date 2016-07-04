@@ -22,21 +22,23 @@ app.set('superSecret',config.secret);
 
 
 apiRoutes.post('/authenticate', function(req, res) {
-
+console.log('Authentication Strated');
   // find the user
   User.findOne({
-    name: req.body.name
+    name: req.body.email
   }, function(err, user) {
 
     if (err) throw err;
 
     if (!user) {
       res.json({ success: false, message: 'Authentication failed. User not found.' });
+      console.log('Authentication failed. User not found');
     } else if (user) {
 
       // check if password matches
       if (user.password != req.body.password) {
         res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+        console.log('Authentication failed. wrong password');
       } else {
         req.user=user._id;
         console.log(req.user);
@@ -46,13 +48,11 @@ apiRoutes.post('/authenticate', function(req, res) {
           expiresIn: 14400 // expires in 24 hours
 
         });
-
+       console.log('enjoy token');
         // return the information including token as JSON
         res.json({
-          success: true,
-          message: 'Enjoy your token!',
           token: token,
-          userid:user._id
+          user : user
         });
       }
 
@@ -74,4 +74,25 @@ apiRoutes.get('/users',function(req,res){
     res.json(users);
   });
 });
+
+apiRoutes.get('/user/:email',function(req,res){
+  User.findOne({
+    name: req.param('email')
+  }, function(err, user) {
+
+    if (err) throw err;
+
+    if (!user) {
+      console.log('Authentication failed. User not found');
+    } else if (user) {
+       console.log('user found');
+        // return the information including token as JSON
+        res.json({
+          user : user
+        });
+      }
+
+  });
+    });
+
   module.exports = apiRoutes;

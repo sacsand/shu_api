@@ -37,7 +37,7 @@ module.exports = {
                     };
                     converter.json2csv(obj, json2csvCallback);
                 } else if (input_tag = 'xml') {
-
+                    //send(serializer.render(obj))
                     console.log('xml is here');
                 }
             }

@@ -5,9 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var morgan      = require('morgan');
+var cors          = require('cors');
 
 
 var routes = require('./routes/index');
+var cases = require('./routes/cases');
 var recipe = require('./routes/recipe');
 var user =require('./routes/user') ;
 var search =require('./routes/recipe_search');
@@ -39,21 +41,38 @@ app.set('superSecret', config.secret); // secret variable
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+app.use(cors({
+    origin: '*',
+    withCredentials: false,
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin' ]
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
-
+/*
+app.all('/*', function(req, response, next) {
+  response.setHeader("Access-Control-Allow-Origin", "*");
+     response.setHeader("Access-Control-Allow-Credentials", "true");
+     response.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+     response.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+  if (req.method == 'OPTIONS') {
+    response.status(200).end();
+  } else {
+    next();
+  }
+});*/
 
 app.use('/', routes);
 app.use('/api', user);
 app.use(Converter.convert);//middlewarer for authnticate users
-app.use(Authenticate.isAuth);//middlewarer for convert response to csv and json
+//app.use(Authenticate.isAuth);//middlewarer for convert response to csv and json
 app.use('/api/recipe', recipe);
 app.use('/api/search', search);
 app.use('/api/comments', comments);
 app.use('/api/ingredients', ingredients);
+app.use('/api/cases',cases);
 
 
 app.get('/setup', function(req, res) {
