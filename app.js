@@ -15,6 +15,8 @@ var user =require('./routes/user') ;
 var search =require('./routes/recipe_search');
 var comments =require('./routes/comment');
 var ingredients =require('./routes/ingredients');
+var wanted =require('./routes/wanted');
+
 
 
 var config = require('./config'); // get our config file
@@ -73,6 +75,7 @@ app.use('/api/search', search);
 app.use('/api/comments', comments);
 app.use('/api/ingredients', ingredients);
 app.use('/api/cases',cases);
+app.use('/api/wanted',wanted);
 
 
 app.get('/setup', function(req, res) {
