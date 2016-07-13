@@ -1,6 +1,11 @@
+var express = require('express');
+var app = express();
+var fs = require('fs');
 var mongoose = require('mongoose');
 var mongoosePaginate = require('mongoose-paginate');
 var Schema = mongoose.Schema;
+
+
 
 var WantedSchema = new mongoose.Schema({
   warent: {
@@ -8,7 +13,7 @@ var WantedSchema = new mongoose.Schema({
     },
   description:String,
   lastseenlocation:String,
-  details:{
+  details:[{
     name:String,
     sex:String,
     race:String,
@@ -16,10 +21,14 @@ var WantedSchema = new mongoose.Schema({
     weight:Number,
     hairColor:String,
     eyeColor:String
-  },
-  images:{
-    type: String,
-    },
+  }],
+  data:String,
+  img:{
+    data:Buffer,
+    contentType:String
+  }
+    ,
+  //img:{ data: Buffer, contentType: String },
   published_at:{ type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now },
 });

@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var morgan      = require('morgan');
 var cors          = require('cors');
-
+var multer = require('multer')
 
 var routes = require('./routes/index');
 var cases = require('./routes/cases');
@@ -48,23 +48,18 @@ app.use(cors({
     withCredentials: false,
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin' ]
 }));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit:'5mb'}));
+app.use(bodyParser.urlencoded({limit: '5mb', extended: true}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
-/*
-app.all('/*', function(req, response, next) {
-  response.setHeader("Access-Control-Allow-Origin", "*");
-     response.setHeader("Access-Control-Allow-Credentials", "true");
-     response.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-     response.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-  if (req.method == 'OPTIONS') {
-    response.status(200).end();
-  } else {
-    next();
-  }
-});*/
+
+/*app.use(multer({ dest: './uploads/',
+ rename: function (fieldname, filename) {
+   return filename;
+ },
+}));
+*/
 
 app.use('/', routes);
 app.use('/api', user);
@@ -76,33 +71,6 @@ app.use('/api/comments', comments);
 app.use('/api/ingredients', ingredients);
 app.use('/api/cases',cases);
 app.use('/api/wanted',wanted);
-
-
-app.get('/setup', function(req, res) {
-
-  // create a sample user
-  var nick = new User({
-    name: 'sac',
-    password: 'password',
-    admin: true
-  });
-
-  // save the sample user
-  nick.save(function(err) {
-    if (err) throw err;
-
-    console.log('User saved successfully');
-    res.json({ success: true });
-  });
-});
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
 // error handlers
 
 // development error handler
@@ -116,7 +84,6 @@ if (app.get('env') === 'development') {
     });
   });
 }
-
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {

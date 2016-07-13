@@ -6,6 +6,15 @@ var Schema = mongoose.Schema;
 module.exports = mongoose.model('User', new Schema({
     name: String,
     password: String,
-    admin: Boolean
-
+    admin: Boolean,
+    station:String,
+    police_id:Number,
+    messages_received:[{
+            content:String,
+            received_at:{ type: Date, default: Date.now }
+    }],
+    messages_send:[{
+            content:String,
+            sent_at:{ type: Date, default: Date.now }
+    }]
 }));
