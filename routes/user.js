@@ -95,4 +95,5 @@ apiRoutes.get('/user/:email',function(req,res){
   });
     });
 
+ 
   module.exports = apiRoutes;

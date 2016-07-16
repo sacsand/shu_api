@@ -41,7 +41,18 @@ function base64_encode(file) {
 var image = base64_encode(req.file.path);
 Wanted.create(
   {"warent":req.body.warent,
-   "data":image}
+   "data":image,
+   "lastseenlocation":req.body.lastseenlocation,
+   "description":req.body.description,
+   "details":[{
+        "name":req.body.name,
+        "sex":req.body.sex,
+        "race":req.body.race,
+        "height":req.body.height,
+        "weight":req.body.weight,
+        "hairColor":req.body.hairColor,
+        "eyeColor":req.body.eyeColor
+   }]  }
   ,function (err) {
     if (err) return console.log(err);
     return res.send(202);

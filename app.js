@@ -13,7 +13,7 @@ var cases = require('./routes/cases');
 var recipe = require('./routes/recipe');
 var user =require('./routes/user') ;
 var search =require('./routes/recipe_search');
-var comments =require('./routes/comment');
+var messages =require('./routes/messages');
 var ingredients =require('./routes/ingredients');
 var wanted =require('./routes/wanted');
 
@@ -39,6 +39,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('superSecret', config.secret); // secret variable
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -67,7 +68,7 @@ app.use(Converter.convert);//middlewarer for authnticate users
 //app.use(Authenticate.isAuth);//middlewarer for convert response to csv and json
 app.use('/api/recipe', recipe);
 app.use('/api/search', search);
-app.use('/api/comments', comments);
+app.use('/api/messages', messages);
 app.use('/api/ingredients', ingredients);
 app.use('/api/cases',cases);
 app.use('/api/wanted',wanted);
