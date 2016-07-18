@@ -25,7 +25,7 @@ var Converter   = require('./middleware/converter'); // get our mongoose model
 
 //mongo db connection
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://c4c5nf3@gmail.com:foncl1234@ds023425.mlab.com:23425/heroku_0gn01fzn', function(err) {
+mongoose.connect('mongodb://heroku_0gn01fzn:sac1234@ds023425.mlab.com:23425/heroku_0gn01fzn', function(err) {
     if(err) {
         console.log('connection error', err);
     } else {
