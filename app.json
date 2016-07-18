@@ -1,0 +1,19 @@
+{
+  "name": "shu_api",
+  "description": "shu 2016 police ai project",
+  "scripts": {
+    "postdeploy": "bin/setup"
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
