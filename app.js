@@ -4,29 +4,25 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var morgan      = require('morgan');
-var cors          = require('cors');
+var morgan  = require('morgan');
+var cors  = require('cors');
 var multer = require('multer')
 
 var routes = require('./routes/index');
 var cases = require('./routes/cases');
-var recipe = require('./routes/recipe');
 var user =require('./routes/user') ;
-var search =require('./routes/recipe_search');
 var messages =require('./routes/messages');
-var ingredients =require('./routes/ingredients');
 var wanted =require('./routes/wanted');
 var map =require('./routes/map');
 
-var config = require('./config'); // get our config file
-
-var Authenticate   = require('./middleware/authenticate'); // get our mongoose model
-var Converter   = require('./middleware/converter'); // get our mongoose model
+var config = require('./config');
+var Authenticate   = require('./middleware/authenticate');
+var Converter   = require('./middleware/converter');
 
 //mongo db connection
 //var mongoURI = 'mongodb://localhost/test';
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://sacsand:sac1234@ds023495.mlab.com:23495/heroku_tdf52rkr', function(err) {
+mongoose.connect('mongodb://sacsand:sac1234@ds023495.mlab.com:23495/heroku_tdf52rkr' , function(err) {
     if(err) {
         console.log('connection error', err);
     } else {
@@ -55,21 +51,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 
-/*app.use(multer({ dest: './uploads/',
- rename: function (fieldname, filename) {
-   return filename;
- },
-}));
-*/
-
 app.use('/', routes);
 app.use('/api', user);
-app.use(Converter.convert);//middlewarer for authnticate users
-//app.use(Authenticate.isAuth);//middlewarer for convert response to csv and json
-app.use('/api/recipe', recipe);
-app.use('/api/search', search);
+
+app.use(Converter.convert);
+//app.use(Authenticate.isAuth);
+
 app.use('/api/messages', messages);
-app.use('/api/ingredients', ingredients);
 app.use('/api/cases',cases);
 app.use('/api/wanted',wanted);
 app.use('/api/map',map);
