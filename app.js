@@ -18,8 +18,6 @@ var ingredients =require('./routes/ingredients');
 var wanted =require('./routes/wanted');
 var map =require('./routes/map');
 
-
-
 var config = require('./config'); // get our config file
 
 var Authenticate   = require('./middleware/authenticate'); // get our mongoose model
@@ -27,7 +25,7 @@ var Converter   = require('./middleware/converter'); // get our mongoose model
 
 //mongo db connection
 var mongoose = require('mongoose');
-mongoose.connect(config.database, function(err) {
+mongoose.connect('mongodb://c4c5nf3@gmail.com:foncl1234@ds023425.mlab.com:23425/heroku_0gn01fzn', function(err) {
     if(err) {
         console.log('connection error', err);
     } else {
