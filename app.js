@@ -16,6 +16,7 @@ var search =require('./routes/recipe_search');
 var messages =require('./routes/messages');
 var ingredients =require('./routes/ingredients');
 var wanted =require('./routes/wanted');
+var map =require('./routes/map');
 
 
 
@@ -72,6 +73,7 @@ app.use('/api/messages', messages);
 app.use('/api/ingredients', ingredients);
 app.use('/api/cases',cases);
 app.use('/api/wanted',wanted);
+app.use('/api/map',map);
 // error handlers
 
 // development error handler
