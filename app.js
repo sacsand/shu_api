@@ -24,8 +24,9 @@ var Authenticate   = require('./middleware/authenticate'); // get our mongoose m
 var Converter   = require('./middleware/converter'); // get our mongoose model
 
 //mongo db connection
+var mongoURI = 'mongodb://localhost/test';
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://heroku_0gn01fzn:sac1234@ds023425.mlab.com:23425/heroku_0gn01fzn', function(err) {
+mongoose.connect(process.env.MONGOLAB_URI, function(err) {
     if(err) {
         console.log('connection error', err);
     } else {
