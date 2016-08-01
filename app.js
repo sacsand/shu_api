@@ -14,7 +14,7 @@ var user =require('./routes/user') ;
 var messages =require('./routes/messages');
 var wanted =require('./routes/wanted');
 var map =require('./routes/map');
-
+var cases_library=require('./routes/cases_library');
 var config = require('./config');
 var Authenticate   = require('./middleware/authenticate');
 var Converter   = require('./middleware/converter');
@@ -22,7 +22,7 @@ var Converter   = require('./middleware/converter');
 //mongo db connection
 //var mongoURI = 'mongodb://localhost/test';
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://sacsand:sac1234@ds023495.mlab.com:23495/heroku_tdf52rkr' , function(err) {
+mongoose.connect(config.database||'mongodb://sacsand:sac1234@ds023495.mlab.com:23495/heroku_tdf52rkr' , function(err) {
     if(err) {
         console.log('connection error', err);
     } else {
@@ -61,6 +61,7 @@ app.use('/api/messages', messages);
 app.use('/api/cases',cases);
 app.use('/api/wanted',wanted);
 app.use('/api/map',map);
+app.use('/api/caseslibry',cases_library);
 // error handlers
 
 // development error handler

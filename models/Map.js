@@ -11,6 +11,7 @@ module.exports = mongoose.model('Map', new Schema({
     incident_type: String,
     active: Boolean,
     Expire_Date:Date,
+    published_at:{ type: Date, default: Date.now },
     updates:[{
             content:String,
             updated_at:{ type: Date, default: Date.now }

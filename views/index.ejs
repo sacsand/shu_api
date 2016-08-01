@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html ng-app >
 
 <head>
     <meta charset="utf-8">
@@ -9,9 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="/asset/skin/superhero/bootstrap.css" media="screen">
     <link rel="stylesheet" href="/asset/skin/assets/css/custom.min.css">
+
+       <script src="/angular/angular.min.js"></script>
+    <script src="/angular/hello.js"></script>
 </head>
 
-<body>
+<body ng-controller="Hello" >
+  {{firstName + " " + lastName}}
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -32,7 +36,7 @@
                         <a href="#"></a>
                     </li>
                     <li>
-                        <a href="#">UserName</a>
+                        <a href="#" ></a>
                     </li>
                     <li>
                         <a href="#"></a>
@@ -159,18 +163,51 @@
                 </div>
                 </div>
                 <div class="tab-pane fade" id="profile">
-                  <form method="put" enctype="multipart/form-data" class="form-horizontal" action="/api/messages//received/push/:id">
-                      <form class="form-horizontal">
-                          <fieldset>
-                              <legend>Add Wanted persons</legend>
-                              <div class="form-group">
-                                  <label for="inputEmail" class="col-lg-2 control-label">Name</label>
-                                  <div class="col-lg-10">
-                                      <input type="text" name="namecx" class="form-control" id="inputDefault">
-                                  </div>
-                              </div>
-                         </fieldset>
-                    </form>
+                  <form method="post" enctype="multipart/form-data" class="form-horizontal" action="/api/caseslibry/add">
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <legend>Add Case</legend>
+                                <div class="form-group">
+                                    <label for="inputEmail" class="col-lg-2 control-label">Case ID</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="case_id" class="form-control" id="inputDefault">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail" class="col-lg-2 control-label">Title</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" name="title" class="form-control" id="inputDefault">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="textArea" class="col-lg-2 control-label">Description</label>
+                                    <div class="col-lg-10">
+                                        <textarea class="form-control" rows="10" id="textArea" name="description"></textarea>
+                                        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="select" class="col-lg-2 control-label">Type</label>
+                                    <div class="col-lg-10">
+                                        <select class="form-control" id="select" name="type">
+                                            <option value="accident">accident</option>
+                                            <option value="robbery">robbery</option>
+                                            <option value="arson">arson</option>
+                                            <option value="murder"> murder</option>
+                                            <option value="child abuse">child abuse</option>
+                                            <option value="kidnapping">kidnapping</option>
+
+                                        </select>
+
+                                    </div>
+                                </div>
+                                Case Image
+                                <input type="file" name="photo" />
+                                <br/>
+
+                                <input type="submit" name="submit" value="submit">
+                        </form>
                 </div>
                 <div class="tab-pane fade" id="dropdown1">
                     <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles
