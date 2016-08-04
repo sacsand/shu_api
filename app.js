@@ -19,10 +19,11 @@ var config = require('./config');
 var Authenticate   = require('./middleware/authenticate');
 var Converter   = require('./middleware/converter');
 
+
 //mongo db connection
 //var mongoURI = 'mongodb://localhost/test';
 var mongoose = require('mongoose');
-//mongoose.connect(config.database||'mongodb://sacsand:sac1234@ds023495.mlab.com:23495/heroku_tdf52rkr' , function(err) {
+//mongoose.connect(config.database , function(err) {
 mongoose.connect('mongodb://sacsand:sac1234@ds023495.mlab.com:23495/heroku_tdf52rkr' , function(err) {
     if(err) {
         console.log('connection error', err);

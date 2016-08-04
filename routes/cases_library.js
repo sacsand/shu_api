@@ -5,15 +5,15 @@ var async = require('async');
 var Caselibre = require('../models/Cases_Library');
 var multer  = require('multer');
 var path =require('path');
-//var upload = multer({ dest: 'uploads/' });
 var fs = require('fs');
+
 /* GET /all cases. */
 router.get('/', function(req, res, next) {
 
      var page = Number(req.param('page'));
      var limit = Number(req.param('limit'));
 
- Caselibre.paginate('title',{ page: page, limit: limit },function (err, post) {
+ Caselibre.paginate({},{ page: page, limit: limit },function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
@@ -26,24 +26,12 @@ Caselibre.create(req.body, function (err, post) {
   });
 });
 
-router.post('/add',multer({ dest: './uploads/'}).single('photo'),function(req,res,next){
-  //var newWanted = new Wanted();
-  console.log(req.file);
-  console.log(req.body);
-
-// function to encode file data to base64 encoded string
-function base64_encode(file) {
-    // read binary data
-    var bitmap = fs.readFileSync(file);
-    // convert binary data to base64 encoded string
-    return new Buffer(bitmap).toString('base64');
-};
-var image = base64_encode(req.file.path);
+router.post('/add',function(req,res,next){
 
 Caselibre.create(
   {"title":req.body.title,
    "case_id":req.body.case_id,
-   "image":image,
+   "image":req.body.image,
    "type":req.body.type,
    "description":req.body.description}
   ,function (err) {
@@ -75,18 +63,15 @@ router.put('/:id',function(req, res, next) {
 });
 
 
+
 router.get('/:id', function(req, res, next) {
   Caselibre.findById(req.params.id, function (err, post) {
     if (err) return next(err);
-    var myjson={"doc":[post]};
-    //sendData() is send json object throgh a converter middleware
-    res.status(200).sendData(myjson);
+    var x={"doc":[post]};
+    res.status(200).sendData(x);
+
   });
 });
-
-
-
-
 
 router.delete('/:id', function(req, res, next) {
   Caselibre.findByIdAndRemove(req.params.id, req.body, function (err, post) {
