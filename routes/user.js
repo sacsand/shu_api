@@ -1,5 +1,4 @@
 var express = require('express');
-//var router = express.Router();
 var mongoose = require('mongoose');
 var User = require('../models/user.js');
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
@@ -95,5 +94,5 @@ apiRoutes.get('/user/:email',function(req,res){
   });
     });
 
- 
+
   module.exports = apiRoutes;

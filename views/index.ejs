@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html ng-app >
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -10,72 +10,30 @@
     <link rel="stylesheet" href="/asset/skin/superhero/bootstrap.css" media="screen">
     <link rel="stylesheet" href="/asset/skin/assets/css/custom.min.css">
 
-       <script src="/angular/angular.min.js"></script>
-    <script src="/angular/hello.js"></script>
 </head>
 
 <body ng-controller="Hello" >
-  {{firstName + " " + lastName}}
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a href="../" class="navbar-brand">Sri Lankan Police Department</a>
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse" id="navbar-main">
-                <ul class="nav navbar-nav">
-
-                    <li>
-                        <a href="../help/"></a>
-                    </li>
-                    <li>
-                        <a href="#"></a>
-                    </li>
-                    <li>
-                        <a href="#" ></a>
-                    </li>
-                    <li>
-                        <a href="#"></a>
-                    </li>
-                    <li>
-                        <a href="#">UserType</a>
-                    </li>
-
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" target="_blank">log Out</a></li>
-                </ul>
+                <a href="../" class="navbar-brand">Sri Lankan Police Department API</a>
 
             </div>
+
         </div>
     </div>
     <div class="container">
         <div class="raw">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Wanted</a></li>
-                <li class=""><a href="#profile" data-toggle="tab" aria-expanded="false">Profile</a></li>
-                <li class="disabled"><a>Disabled</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-      Dropdown <span class="caret"></span>
-    </a>
-                    <ul class="dropdown-menu">
-                        <li class=""><a href="#dropdown1" data-toggle="tab" aria-expanded="false">Action</a></li>
-                        <li class="divider"></li>
-                        <li class=""><a href="#dropdown2" data-toggle="tab" aria-expanded="false">Another action</a></li>
-                    </ul>
-                </li>
+
+
             </ul>
             <div id="myTabContent" class="tab-content">
                 <div class="tab-pane fade active in" id="home">
                   <div class="row">
                     <div class="col-lg-6">
-                      <legend>Wanted Perosns</legend>
+                      <legend>API Instruction</legend>
                     </div>
 
                     <form method="post" enctype="multipart/form-data" class="form-horizontal" action="/api/wanted/file-upload">
@@ -162,61 +120,8 @@
                         </form>
                 </div>
                 </div>
-                <div class="tab-pane fade" id="profile">
-                  <form method="post" enctype="multipart/form-data" class="form-horizontal" action="/api/caseslibry/add">
-                        <form class="form-horizontal">
-                            <fieldset>
-                                <legend>Add Case</legend>
-                                <div class="form-group">
-                                    <label for="inputEmail" class="col-lg-2 control-label">Case ID</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" name="case_id" class="form-control" id="inputDefault">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail" class="col-lg-2 control-label">Title</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" name="title" class="form-control" id="inputDefault">
-                                    </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <label for="textArea" class="col-lg-2 control-label">Description</label>
-                                    <div class="col-lg-10">
-                                        <textarea class="form-control" rows="10" id="textArea" name="description"></textarea>
-                                        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="select" class="col-lg-2 control-label">Type</label>
-                                    <div class="col-lg-10">
-                                        <select class="form-control" id="select" name="type">
-                                            <option value="accident">accident</option>
-                                            <option value="robbery">robbery</option>
-                                            <option value="arson">arson</option>
-                                            <option value="murder"> murder</option>
-                                            <option value="child abuse">child abuse</option>
-                                            <option value="kidnapping">kidnapping</option>
 
-                                        </select>
-
-                                    </div>
-                                </div>
-                                Case Image
-                                <input type="file" name="photo" />
-                                <br/>
-
-                                <input type="submit" name="submit" value="submit">
-                        </form>
-                </div>
-                <div class="tab-pane fade" id="dropdown1">
-                    <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles
-                        etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
-                </div>
-                <div class="tab-pane fade" id="dropdown2">
-                    <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life
-                        echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.</p>
-                </div>
             </div>
         </div>
     </div>

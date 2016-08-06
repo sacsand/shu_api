@@ -80,4 +80,12 @@ router.delete('/:id', function(req, res, next) {
   });
 });
 
+router.get('/count', function(req, res, next) {
+    Caselibre.count({}, function(err, count) {
+        
+        res.json(count);
+
+    })
+});
+
 module.exports = router;
