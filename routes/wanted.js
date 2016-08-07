@@ -36,9 +36,11 @@ function base64_encode(file) {
     return new Buffer(bitmap).toString('base64');
 };
 var image = base64_encode(req.file.path);
+var d= "data:image/png;base64,";
+ var img = d.concat(image);
 Wanted.create(
   {"warent":req.body.warent,
-   "data":image,
+   "data":img,
    "lastseenlocation":req.body.lastseenlocation,
    "description":req.body.description,
    "details":[{

@@ -26,9 +26,7 @@ var WantedSchema = new mongoose.Schema({
   img:{
     data:Buffer,
     contentType:String
-  }
-    ,
-  //img:{ data: Buffer, contentType: String },
+  },
   published_at:{ type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now },
 });
