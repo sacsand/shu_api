@@ -1,0 +1,396 @@
+{
+	"variables": [],
+	"info": {
+		"name": "police",
+		"_postman_id": "47f29cc8-8889-28f2-b1f3-754015322047",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Notes",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost:3000/api/notes/?page=1&limit=10",
+					"request": {
+						"url": "localhost:3000/api/notes/?page=1&limit=10",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "caseLibry",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost:3000/api/comments/push/:id",
+					"request": {
+						"url": "localhost:3000/api/caseslibry/timeline/579396710d6b33ac2c7af39e",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n     \"timeline\":[\n        {\n            \"title\" :\"capture a suspect\",\n            \"content\":\"t. Tor's users employ this network by connecting through a series of virtual tunnels rather than making a direct connection, thus allowing both organizations and individuals to share information over public networks without compromising t\"\n        }\n    \n    \n       ] \n}"
+						},
+						"description": "add comment"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3000/api/comments/push/:id",
+					"request": {
+						"url": "localhost:3000/api/caseslibry/57938df13970744326cd13e5",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n     \"timeline\":[\n        {\n            \"title\" :\"capture a suspect\",\n            \"coment\":\"t. Tor's users employ this network by connecting through a series of virtual tunnels rather than making a direct connection, thus allowing both organizations and individuals to share information over public networks without compromising t\"\n        }\n    \n    \n       ] \n}"
+						},
+						"description": "get one"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3000/api/",
+					"request": {
+						"url": "localhost:3000/api/caseslibry/?page=1&limit=10",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n     \"timeline\":[\n        {\n            \"title\" :\"capture a suspect\",\n            \"coment\":\"t. Tor's users employ this network by connecting through a series of virtual tunnels rather than making a direct connection, thus allowing both organizations and individuals to share information over public networks without compromising t\"\n        }\n    \n    \n       ] \n}"
+						},
+						"description": "get one"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3000/api/comments/add",
+					"request": {
+						"url": "localhost:3000/api/caseslibry/add",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "hi",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "image",
+									"value": "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",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "add comment"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cases",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost:3000/api/cases?page=1&limit=4",
+					"request": {
+						"url": "localhost:3000/api/wanted",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n   \"warent\":\"Murdering\",\n   \"description\":\"Stringdsf dsfjldj jdfjdlj fdsl jfdfjkdfj jflk fdfjj sac and ajdjsfk\",\n   \"last_seen_location\":\"Colombo\",\n  \"details\":{\n    \"name\":\"Samarya oaoar\",\n    \"sex\":\"Male\",\n    \"race\":\"Black\",\n    \"height\":165,\n    \"weight\":89,\n    \"hairColor\":\"Black\",\n    \"eyeColor\": \"Brown\"\n    },\n  \"images\":\"image url\"\n    \n}    \n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3000/api/cases",
+					"request": {
+						"url": "localhost:3000/api/cases",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"pol\",\n    \"description\":\"asscvvdcv j podj jpdjdspjspd jdpvjdspsdjvsdjvjpj\",\n    \"note\":\"sdsds\"\n    \n    \n}    \n"
+						},
+						"description": "post request"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "map",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost:3000/api/map/add",
+					"request": {
+						"url": "localhost:3000/api/map/add",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "incident_id",
+									"value": "12345",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "title",
+									"value": "public vilation",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "lat",
+									"value": "6.932860",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "lng",
+									"value": "79.890461",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "incident_type",
+									"value": "accident",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3000/api/map/add",
+					"request": {
+						"url": "localhost:3000/api/map",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "Title",
+									"value": "Pizza Chili Chicken",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "PlaceName",
+									"value": "Pizza Hut",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "RecipeId",
+									"value": "578dd4960dc6a4431624682d",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "RecipeName",
+									"value": "Pizza Chili",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "lat",
+									"value": "6.916810",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "lng",
+									"value": "79.913903",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "messages",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost:3000/api/messages/received/push/5778e75dbf132517292b476b",
+					"request": {
+						"url": "localhost:3000/api/messages/received/push/5778e75dbf132517292b476b",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n     \"messages\":[\n        {\n            \"content\" :\"2st message dlkldf dfl fdlkk df dfdldlk fdkfdlkdlkdlfkdlkl  kdlflfdlkf dlfk dlkldfdkk dlfkdlfkdk fldkfldkl dfldkd fkdlfk dlfkkfld fdl\"\n            \n        }\n    \n    \n       ] \n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "wanted",
+			"description": "",
+			"item": [
+				{
+					"name": "localhost:3000/api/cases",
+					"request": {
+						"url": "localhost:3000/api/wanted",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n   \"warent\":\"Bombing\",\n   \"description\":\"s dsfj hjhkh\",\n   \"lastseenlocation\":\"Colombo\",\n  \"details\":{\n    \"name\":\"Sandarywr\",\n    \"sex\":\"Male\",\n    \"race\":\"cccc\",\n    \"height\":43,\n    \"weigh\":243,\n    \"hairColor\":\"Red\",\n    \"eyeColor\": \"Black\"\n    },\n  \"images\":\"image url\"\n    \n}    \n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3000/api/cases",
+					"request": {
+						"url": "localhost:3000/api/wanted?page=1&limit=10",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n   \"warent\":\"warent for kidnap\",\n   \"description\":\"s dsfj hjhkh\",\n   \"lastseenlocation\" : \"Colombdsdsdo\",\n  \"details\":[{\n    \"name\":\"Sandarywr\",\n    \"sex\":\"Striccng\",\n    \"race\":\"cccc\",\n    \"height\":23,\n    \"weigh\":23,\n    \"hairColor\":\"ccc\",\n    \"eyeColor\": \"Strccccing\"\n    }],\n  \"images\":\"image url\"\n    \n}    \n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3000/api/cases/id",
+					"request": {
+						"url": "localhost:3000/api/wanted/577d5b9f648a06d128cad2aa",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n   \"warent\":\"warent for kidnap\",\n   \"description\":\"s dsfj hjhkh\",\n   \"lastseenlocation\" : \"Colombdsdsdo\",\n  \"details\":[{\n    \"name\":\"Sandarywr\",\n    \"sex\":\"Striccng\",\n    \"race\":\"cccc\",\n    \"height\":23,\n    \"weigh\":23,\n    \"hairColor\":\"ccc\",\n    \"eyeColor\": \"Strccccing\"\n    }],\n  \"images\":\"image url\"\n    \n}    \n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3000/api/cases/iddelete",
+					"request": {
+						"url": "localhost:3000/api/wanted/577d5b9f648a06d128cad2aa",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

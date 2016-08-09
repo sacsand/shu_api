@@ -1,11 +1,10 @@
-//var request = require("request");
 var request = require('supertest');
 var express = require('express');
 var app = require('../app');
 var should = require('should');
-//var app = express();
 
-//token is chnging time to time .so this varible should change when testing.generate new token using /api/authnticate
+
+//this token is change according to the user .. so before testing first generate jwt token and replace with the current.. otherwise some test cases will fail .
 var user_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIkX18iOnsic3RyaWN0TW9kZSI6dHJ1ZSwiZ2V0dGVycyI6e30sIndhc1BvcHVsYXRlZCI6ZmFsc2UsImFjdGl2ZVBhdGhzIjp7InBhdGhzIjp7Il9fdiI6ImluaXQiLCJhZG1pbiI6ImluaXQiLCJwYXNzd29yZCI6ImluaXQiLCJuYW1lIjoiaW5pdCIsIl9pZCI6ImluaXQifSwic3RhdGVzIjp7Imlnbm9yZSI6e30sImRlZmF1bHQiOnt9LCJpbml0Ijp7Il9fdiI6dHJ1ZSwiYWRtaW4iOnRydWUsInBhc3N3b3JkIjp0cnVlLCJuYW1lIjp0cnVlLCJfaWQiOnRydWV9LCJtb2RpZnkiOnt9LCJyZXF1aXJlIjp7fX0sInN0YXRlTmFtZXMiOlsicmVxdWlyZSIsIm1vZGlmeSIsImluaXQiLCJkZWZhdWx0IiwiaWdub3JlIl19LCJlbWl0dGVyIjp7ImRvbWFpbiI6bnVsbCwiX2V2ZW50cyI6e30sIl9ldmVudHNDb3VudCI6MCwiX21heExpc3RlbmVycyI6MH19LCJpc05ldyI6ZmFsc2UsIl9kb2MiOnsiX192IjowLCJhZG1pbiI6ZmFsc2UsInBhc3N3b3JkIjoic2FjMTIzNCIsIm5hbWUiOiJzYWNzYW5kIiwiX2lkIjoiNTc3MzYxYTEzODNkNmY4MzE1OTI4ZjhiIn0sIl9wcmVzIjp7IiRfX29yaWdpbmFsX3NhdmUiOltudWxsLG51bGxdfSwiX3Bvc3RzIjp7IiRfX29yaWdpbmFsX3NhdmUiOltdfSwiaWF0IjoxNDY3MzA1MTI1LCJleHAiOjE0NjczMTk1MjV9.iVsSDiobddz1qnIEtDejQgFejX1AiT0pI81FLbNXe3w"
 
 
@@ -20,10 +19,10 @@ describe('GET /api/users', function() {
 });
 
 
-describe('GET /api/recipe without token', function() {
+describe('GET /api/notes without token', function() {
     it('respond with json', function(done) {
         request(app)
-            .get('/api/recipe')
+            .get('/api/notes')
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
             .expect(403)
@@ -35,10 +34,10 @@ describe('GET /api/recipe without token', function() {
     });
 });
 
-describe('GET /api/recipe with token', function() {
+describe('GET /api/notes with token', function() {
     it('respond with json', function(done) {
         request(app)
-            .get('/api/recipe')
+            .get('/api/notes')
             .set('Accept', 'application/json')
             .send({
                 token: user_token
@@ -53,10 +52,10 @@ describe('GET /api/recipe with token', function() {
     });
 });
 
-describe('GET /api/comments without token', function() {
+describe('GET /api/maps without token', function() {
     it('respond with json', function(done) {
         request(app)
-            .get('/api/comments')
+            .get('/api/maps')
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
             .expect(403)
@@ -70,10 +69,10 @@ describe('GET /api/comments without token', function() {
 
 
 
-describe('GET /api/ingredients without token', function() {
+describe('GET /api/wanted without token', function() {
     it('respond with json', function(done) {
         request(app)
-            .get('/api/ingredients')
+            .get('/api/wanted')
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
             .expect(403)
@@ -127,8 +126,8 @@ describe('Post /api/authenticate/  authentication get a token test with wrong pa
         request(app)
             .post('/api/authenticate')
             .send({
-                name: "jhonssssn",
-                password: "jhonsss"
+                name: "wrong username",
+                password: "sac1234"
             })
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
@@ -142,13 +141,13 @@ describe('Post /api/authenticate/  authentication get a token test with wrong pa
     });
 });
 
-describe('Post /api/authenticate/  authentication get a token test with wrong password', function() {
+describe('Post /api/authenticate/  authentication get a token test with wrong username', function() {
     it('respond with json', function(done) {
         request(app)
             .post('/api/authenticate')
             .send({
-                name: "jhonssssn",
-                password: "jhonsss"
+                name: "sacs",
+                password: "wrongpassword"
             })
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
@@ -162,10 +161,10 @@ describe('Post /api/authenticate/  authentication get a token test with wrong pa
     });
 });
 
-describe('GET /api/recipe all as csv format', function() {
+describe('GET /api/notes as csv format', function() {
     it('respond with csv ', function(done) {
         request(app)
-            .get('/api/recipe/')
+            .get('/api/notes/')
             .send({
                tag:"csv",
                token:user_token
@@ -182,10 +181,10 @@ describe('GET /api/recipe all as csv format', function() {
     });
 });
 
-describe('GET /api/recipe all ', function() {
+describe('GET /api/notes all ', function() {
     it('respond with ', function(done) {
-        request(app)
-            .get('/api/recipe/')
+        request(app)recipe all
+            .get('/api/notes/')
             .send({
 
                token:user_token
